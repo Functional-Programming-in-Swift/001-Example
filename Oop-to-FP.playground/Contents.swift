@@ -25,9 +25,9 @@ class UserDatabase {
   ]
  
     // print active user order by index
-    var userNames = [String]()
     
-    func getActiveUsers()  {
+    
+    func getActiveUsers() -> [String] {
         var activeUsers = [User]()
         
         users.forEach { (user) in
@@ -40,11 +40,12 @@ class UserDatabase {
             user1.id < user2.id
         }
         
+        var userNames = [String]()
         userNames.removeAll()
         activeUsers.forEach { (user) in
             userNames.append(user.name)
         }
-        
+        return userNames
     }
     
 
@@ -52,7 +53,6 @@ class UserDatabase {
 }
 
 let dataBase = UserDatabase()
-dataBase.getActiveUsers()
-print(dataBase.userNames)
+print(dataBase.getActiveUsers())
 
 
