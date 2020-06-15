@@ -24,19 +24,17 @@ class UserDatabase {
         User(id: 14, name: "Joyse", active: false)
     ]
     
-    // print names of active user order by index    
+    // print names of active user order by index
     func getActiveUsers() -> [String] {
         return users.filter{
-            user in user.active
-        }.sorted(by: {(user1, user2) -> Bool in
-            user1.id < user2.id})
-            .map { user in
-                user.name
+            $0.active
+        }.sorted(by: {
+            $0.id < $1.id})
+            .map {
+                $0.name
         }
     }
 }
 
 let dataBase = UserDatabase()
 print(dataBase.getActiveUsers())
-
-
